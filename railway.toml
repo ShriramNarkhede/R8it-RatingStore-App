@@ -6,6 +6,9 @@ healthcheckPath = "/api/auth"
 [[services]]
 name = "frontend"
 dockerfilePath = "frontend/Dockerfile"
+buildCommand = "docker build -f frontend/Dockerfile -t frontend ."
+startCommand = "nginx -g 'daemon off;'"
+watchPatterns = ["frontend/**"]
 
 [deploy]
 restartPolicyType = "ON_FAILURE"
