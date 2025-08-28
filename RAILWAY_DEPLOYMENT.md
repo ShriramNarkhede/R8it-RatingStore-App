@@ -4,11 +4,16 @@
 - GitHub account with your project repository
 - Railway account (free at [railway.app](https://railway.app))
 
+## ⚠️ IMPORTANT: Fix for Nixpacks Build Issue
+
+The build was failing because Railway couldn't detect the correct build plan. Here's the **CORRECT** way to deploy:
+
 ## Step-by-Step Deployment
 
 ### 1. Prepare Your Repository
 Make sure your project is pushed to GitHub with these files:
-- `railway.json` ✅
+- `railway-backend.json` ✅ (for backend service)
+- `railway-frontend.json` ✅ (for frontend service)
 - `backend/Procfile` ✅
 - Updated `backend/config/database.js` ✅
 
@@ -17,15 +22,16 @@ Make sure your project is pushed to GitHub with these files:
 2. Sign up with GitHub
 3. Click "New Project"
 
-### 3. Deploy Backend
+### 3. Deploy Backend (First Service)
 1. **Choose "Deploy from GitHub repo"**
 2. **Select your repository**
-3. **Choose the backend directory** (or deploy from root)
-4. **Add PostgreSQL Database:**
+3. **IMPORTANT:** Deploy from the **ROOT** directory (not backend folder)
+4. **Rename the service** to "Backend" in Railway dashboard
+5. **Add PostgreSQL Database:**
    - Click "New" → "Database" → "PostgreSQL"
    - Railway will automatically create a `DATABASE_URL`
 
-### 4. Configure Environment Variables
+### 4. Configure Backend Environment Variables
 In your backend service, add these variables:
 ```env
 JWT_SECRET=your_super_secret_jwt_key_here
@@ -33,31 +39,73 @@ NODE_ENV=production
 PORT=5000
 ```
 
-### 5. Deploy Frontend
-1. **Create another service** in the same project
+### 5. Deploy Frontend (Second Service)
+1. **In the same project, click "New Service"**
 2. **Choose "Deploy from GitHub repo"**
 3. **Select your repository again**
-4. **Choose the frontend directory**
-5. **Set build command:** `npm run build`
-6. **Set start command:** `npm run preview` (or serve the dist folder)
+4. **IMPORTANT:** Deploy from the **ROOT** directory (not frontend folder)
+5. **Rename the service** to "Frontend" in Railway dashboard
 
-### 6. Update Frontend API Configuration
-Update your frontend API base URL to point to your Railway backend URL.
+### 6. Configure Frontend Environment Variables
+In your frontend service, add:
+```env
+VITE_API_URL=https://your-backend-service.railway.app/api
+```
+
+## 🔧 Railway Configuration Files
+
+### Backend Service (`railway-backend.json`)
+```json
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "cd backend && npm install",
+    "watchPatterns": ["backend/**/*"]
+  },
+  "deploy": {
+    "startCommand": "cd backend && npm start",
+    "healthcheckPath": "/api/auth"
+  }
+}
+```
+
+### Frontend Service (`railway-frontend.json`)
+```json
+{
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "watchPatterns": ["frontend/**/*"]
+  },
+  "deploy": {
+    "startCommand": "cd frontend && npx serve -s dist -l $PORT"
+  }
+}
+```
+
+## 🚨 Why This Fixes the Build Issue
+
+1. **Root Directory Deployment:** Railway needs to see the entire project structure
+2. **Custom Build Commands:** We specify exactly what to build and where
+3. **Separate Services:** Backend and frontend are deployed as separate services
+4. **Correct Paths:** Build commands use `cd` to navigate to the right directories
 
 ## Railway Dashboard Setup
 
 ### Backend Service
-- **Build Command:** `npm install`
-- **Start Command:** `npm start`
-- **Health Check Path:** `/api/auth` (or any endpoint)
+- **Source Directory:** Root of repository
+- **Build Command:** `cd backend && npm install`
+- **Start Command:** `cd backend && npm start`
+- **Health Check Path:** `/api/auth`
 
 ### Database Service
 - **Auto-generated:** Railway handles this
 - **Connection:** Use `DATABASE_URL` environment variable
 
 ### Frontend Service
-- **Build Command:** `npm install && npm run build`
-- **Start Command:** `npx serve -s dist -l $PORT`
+- **Source Directory:** Root of repository
+- **Build Command:** `cd frontend && npm install && npm run build`
+- **Start Command:** `cd frontend && npx serve -s dist -l $PORT`
 
 ## Environment Variables Reference
 
@@ -67,31 +115,24 @@ Update your frontend API base URL to point to your Railway backend URL.
 | `JWT_SECRET` | Your JWT signing key | `mysecretkey123` |
 | `NODE_ENV` | Environment | `production` |
 | `PORT` | Server port | `5000` |
+| `VITE_API_URL` | Backend API URL | `https://backend.railway.app/api` |
 
 ## Troubleshooting
 
 ### Common Issues:
-1. **Build fails:** Check if all dependencies are in `package.json`
+1. **Build fails:** Make sure you're deploying from ROOT directory
 2. **Database connection fails:** Verify `DATABASE_URL` is set
-3. **Frontend can't reach backend:** Check CORS settings and URLs
+3. **Frontend can't reach backend:** Check CORS settings and `VITE_API_URL`
 
-### Useful Commands:
-```bash
-# View logs
-railway logs
-
-# Check status
-railway status
-
-# Open shell
-railway shell
-```
+### Build Commands Explained:
+- **Backend:** `cd backend && npm install` - Installs dependencies in backend folder
+- **Frontend:** `cd frontend && npm install && npm run build` - Installs deps and builds
 
 ## Post-Deployment
 
-1. **Test your API endpoints**
+1. **Test your API endpoints** at backend URL
 2. **Verify database connections**
-3. **Check frontend functionality**
+3. **Check frontend functionality** at frontend URL
 4. **Set up custom domain** (optional)
 5. **Configure monitoring** (optional)
 
