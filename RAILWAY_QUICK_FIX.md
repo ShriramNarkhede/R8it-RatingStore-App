@@ -1,9 +1,9 @@
-# 🚨 Railway Build Fix - Quick Solution
+# 🚨 Railway Build Fix - Docker Solution
 
 ## ❌ Current Problem
-Your Railway build is failing with: **"Nixpacks was unable to generate a build plan for this app"**
+Your Railway build is failing because it's trying to use a Dockerfile without Node.js installed.
 
-## ✅ Solution: Deploy as Separate Services
+## ✅ Solution: Use Docker with Proper Configuration
 
 ### Step 1: Delete Current Failed Service
 1. Go to your Railway dashboard
@@ -14,7 +14,7 @@ Your Railway build is failing with: **"Nixpacks was unable to generate a build p
 1. **Click "New Project"** (or "New Service" if you have a project)
 2. **Choose "Deploy from GitHub repo"**
 3. **Select your repository**
-4. **IMPORTANT:** Deploy from **ROOT** directory (not backend folder)
+4. **IMPORTANT:** Deploy from **ROOT** directory
 5. **Rename service** to "Backend"
 6. **Add PostgreSQL database**
 
@@ -22,23 +22,40 @@ Your Railway build is failing with: **"Nixpacks was unable to generate a build p
 1. **In same project, click "New Service"**
 2. **Choose "Deploy from GitHub repo"**
 3. **Select your repository again**
-4. **IMPORTANT:** Deploy from **ROOT** directory (not frontend folder)
+4. **IMPORTANT:** Deploy from **ROOT** directory
 5. **Rename service** to "Frontend"
 
 ## 🔧 Why This Works
 
-- **Root Directory:** Railway sees the full project structure
-- **Custom Build Commands:** We tell Railway exactly what to build
+- **Docker Builders:** Uses proper Dockerfiles with Node.js installed
+- **Multi-stage Builds:** Frontend uses nginx for production serving
 - **Separate Services:** Backend and frontend are independent
-- **Correct Paths:** Build commands navigate to the right folders
+- **Proper Dependencies:** All required packages are installed in containers
 
 ## 📋 Required Files (Already Created)
 
-✅ `railway-backend.json` - Backend configuration
-✅ `railway-frontend.json` - Frontend configuration  
+✅ `Dockerfile` - Backend Docker configuration
+✅ `frontend/Dockerfile` - Frontend Docker configuration
+✅ `frontend/nginx.conf` - Nginx configuration for frontend
+✅ `railway-backend.json` - Backend Railway config (Docker)
+✅ `railway-frontend.json` - Frontend Railway config (Docker)
 ✅ `backend/Procfile` - Backend service file
 ✅ Updated `backend/config/database.js` - Database config
 ✅ Updated `frontend/package.json` - Added serve package
+
+## 🐳 Docker Configuration Details
+
+### Backend Dockerfile
+- Uses Node.js 18 Alpine
+- Installs production dependencies
+- Runs as non-root user
+- Includes health checks
+
+### Frontend Dockerfile
+- Multi-stage build (Node.js + nginx)
+- Builds React app
+- Serves with nginx
+- Optimized for production
 
 ## 🚀 Try Again
 
