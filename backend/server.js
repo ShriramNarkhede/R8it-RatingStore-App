@@ -33,7 +33,6 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// Graceful error handlers to avoid silent crashes
 process.on('unhandledRejection', (reason) => {
   console.error('Unhandled Rejection:', reason);
 });

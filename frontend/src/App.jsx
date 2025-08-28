@@ -25,8 +25,7 @@ function App() {
           borderRadius: '20px',
           marginBottom: '32px',
           boxShadow: '0 10px 30px rgba(0, 0, 0, 0.08)',
-        }}
-      >
+        }}>
         <h1
           style={{
             fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
