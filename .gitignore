@@ -1,0 +1,43 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnpm-debug.log
+
+docker-compose.yml
+docker-compose.yaml
+# Build outputs
+/dist
+/build
+/.vite
+
+
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+
+# Logs
+logs
+*.log
+
+# IDE and editors
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Docker
+.docker/
+
+# Vite temp (for debugging)
+node_modules/.vite-temp
+
+# OS
+Thumbs.db
