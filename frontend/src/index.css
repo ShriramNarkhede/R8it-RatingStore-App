@@ -55,7 +55,7 @@ body {
   border-radius: 16px; /* Rounded corners */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
   padding: 24px; /* Inner padding */
-  margin: 16px 0; /* Vertical margin */
+  margin: 16px 10px; /* Vertical margin */
   transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
 }
 

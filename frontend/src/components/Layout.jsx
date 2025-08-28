@@ -21,7 +21,7 @@ export default function Layout() {
           alignItems: 'center', 
           gap: 'clamp(8px, 2vw, 16px)', 
           padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)',
-          borderRadius: '0 0 clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
+          borderRadius: 'clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
           margin: '0 clamp(8px, 2vw, 16px)',
           flexWrap: 'wrap'
         }}>
@@ -63,7 +63,7 @@ export default function Layout() {
         alignItems: 'center', 
         gap: 'clamp(8px, 2vw, 16px)', 
         padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)',
-        borderRadius: '0 0 clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
+        borderRadius: 'clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
         margin: '0 clamp(8px, 2vw, 16px)',
         flexWrap: 'wrap'
       }}>
