@@ -41,3 +41,5 @@ node_modules/.vite-temp
 
 # OS
 Thumbs.db
+# Railway deployment docs
+railway*.md
