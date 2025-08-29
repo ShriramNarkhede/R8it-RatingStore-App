@@ -41,24 +41,24 @@ export default function Profile() {
       </h1>
       <div style={{
         display: 'grid',
-        gap: 'clamp(20px, 5vw, 24px)',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
+        gap: 'clamp(16px, 4vw, 20px)',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))'
       }}>
         {/* User Info Card */}
         <div className="glass-card">
           <h2 style={{ marginBottom: '20px', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             Account Information
           </h2>
-          <div style={{ display: 'grid', gap: '16px' }}>
-            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+          <div style={{ display: 'grid', gap: '16px', minWidth: '0', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
+            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)', minWidth: '0' }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Full Name</div>
               <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{user?.name}</div>
             </div>
-            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)', minWidth: '0' }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Email Address</div>
               <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{user?.email}</div>
             </div>
-            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)' }}>
+            <div style={{ padding: '16px', background: 'var(--bg-secondary)', borderRadius: '12px', border: '1px solid var(--border-color)', minWidth: '0' }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Account Role</div>
               <div style={{ color: 'var(--primary-color)', fontWeight: '600', textTransform: 'capitalize' }}>{user?.role}</div>
             </div>

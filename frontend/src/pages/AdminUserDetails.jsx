@@ -87,8 +87,8 @@ export default function AdminUserDetails() {
 
       <div style={{ 
         display: 'grid', 
-        gap: 'clamp(20px, 5vw, 24px)', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' 
+        gap: 'clamp(16px, 4vw, 20px)', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))' 
       }}>
         {/* User Information Card */}
         <div className="glass-card">
@@ -96,12 +96,13 @@ export default function AdminUserDetails() {
             User Information
           </h2>
           
-          <div style={{ display: 'grid', gap: '16px' }}>
+          <div style={{ display: 'grid', gap: '16px', minWidth: '0', wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
             <div style={{ 
               padding: '16px', 
               background: 'var(--bg-secondary)', 
               borderRadius: '12px', 
-              border: '1px solid var(--border-color)' 
+              border: '1px solid var(--border-color)',
+              minWidth: '0' 
             }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Full Name</div>
               <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{user.name}</div>
@@ -111,7 +112,8 @@ export default function AdminUserDetails() {
               padding: '16px', 
               background: 'var(--bg-secondary)', 
               borderRadius: '12px', 
-              border: '1px solid var(--border-color)' 
+              border: '1px solid var(--border-color)',
+              minWidth: '0' 
             }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Email Address</div>
               <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{user.email}</div>
@@ -121,7 +123,8 @@ export default function AdminUserDetails() {
               padding: '16px', 
               background: 'var(--bg-secondary)', 
               borderRadius: '12px', 
-              border: '1px solid var(--border-color)' 
+              border: '1px solid var(--border-color)',
+              minWidth: '0' 
             }}>
               <div style={{ color: 'var(--text-secondary)', fontSize: '14px', marginBottom: '4px' }}>Address</div>
               <div style={{ color: 'var(--text-primary)', fontWeight: '600' }}>{user.address}</div>

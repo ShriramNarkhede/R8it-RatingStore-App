@@ -9,6 +9,9 @@ export default function Admin() {
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
   const [stores, setStores] = useState([]);
+  const PAGE_SIZE = 10;
+  const [userPage, setUserPage] = useState(1);
+  const [storePage, setStorePage] = useState(1);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [searchLoading, setSearchLoading] = useState(false);
@@ -50,6 +53,8 @@ export default function Admin() {
       setStats(s);
       setUsers(u);
       setStores(st);
+      setUserPage(1);
+      setStorePage(1);
     } catch (err) {
       setError(err?.response?.data?.message || 'Failed to load admin data');
     } finally {
@@ -447,7 +452,7 @@ export default function Admin() {
                 </tr>
               </thead>
               <tbody>
-                {users.map((user, index) => (
+                {users.slice((userPage - 1) * PAGE_SIZE, userPage * PAGE_SIZE).map((user, index) => (
                   <tr key={user.id} style={{
                     borderBottom: '1px solid var(--border-color)',
                     background: index % 2 === 0 ? 'var(--bg-secondary)' : 'var(--bg-card)'
@@ -479,6 +484,31 @@ export default function Admin() {
                 ))}
               </tbody>
             </table>
+            {/* Users pagination */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+              {(() => {
+                const total = Math.max(1, Math.ceil(users.length / PAGE_SIZE));
+                const pages = Array.from({ length: total }, (_, i) => i + 1);
+                return (
+                  <>
+                    <button className="btn btn-secondary" disabled={userPage === 1} onClick={() => setUserPage((p) => Math.max(1, p - 1))}>Prev</button>
+                    {pages.map((p) => (
+                      <button
+                        key={p}
+                        className="btn"
+                        style={{
+                          padding: '6px 10px',
+                          background: p === userPage ? 'var(--primary-color)' : 'var(--bg-secondary)',
+                          color: p === userPage ? '#fff' : 'var(--text-primary)'
+                        }}
+                        onClick={() => setUserPage(p)}
+                      >{p}</button>
+                    ))}
+                    <button className="btn btn-secondary" disabled={userPage === total} onClick={() => setUserPage((p) => Math.min(total, p + 1))}>Next</button>
+                  </>
+                );
+              })()}
+            </div>
           </div>
         )}
       </div>
@@ -566,7 +596,7 @@ export default function Admin() {
                 </tr>
               </thead>
               <tbody>
-                {stores.map((store, index) => (
+                {stores.slice((storePage - 1) * PAGE_SIZE, storePage * PAGE_SIZE).map((store, index) => (
                   <tr key={store.id} style={{
                     borderBottom: '1px solid var(--border-color)',
                     background: index % 2 === 0 ? 'var(--bg-secondary)' : 'var(--bg-card)'
@@ -593,6 +623,31 @@ export default function Admin() {
                 ))}
               </tbody>
             </table>
+            {/* Stores pagination */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px', flexWrap: 'wrap' }}>
+              {(() => {
+                const total = Math.max(1, Math.ceil(stores.length / PAGE_SIZE));
+                const pages = Array.from({ length: total }, (_, i) => i + 1);
+                return (
+                  <>
+                    <button className="btn btn-secondary" disabled={storePage === 1} onClick={() => setStorePage((p) => Math.max(1, p - 1))}>Prev</button>
+                    {pages.map((p) => (
+                      <button
+                        key={p}
+                        className="btn"
+                        style={{
+                          padding: '6px 10px',
+                          background: p === storePage ? 'var(--primary-color)' : 'var(--bg-secondary)',
+                          color: p === storePage ? '#fff' : 'var(--text-primary)'
+                        }}
+                        onClick={() => setStorePage(p)}
+                      >{p}</button>
+                    ))}
+                    <button className="btn btn-secondary" disabled={storePage === total} onClick={() => setStorePage((p) => Math.min(total, p + 1))}>Next</button>
+                  </>
+                );
+              })()}
+            </div>
           </div>
         )}
       </div>
