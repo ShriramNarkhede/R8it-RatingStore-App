@@ -185,7 +185,7 @@ export default function Admin() {
         marginBottom: 'clamp(24px, 6vw, 32px)'
       }}>
         {/* Create User Form */}
-        <div className="glass-card" >
+        <div className="glass-card">
           <h3 style={{ marginBottom: '20px', color: 'var(--text-primary)' }}>
             Create User
           </h3>
