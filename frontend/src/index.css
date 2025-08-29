@@ -338,3 +338,36 @@ body {
 .m-responsive {
   margin: clamp(8px, 2vw, 16px);
 }
+
+/* Responsive table (stack rows on small screens) */
+@media (max-width: 600px) {
+  table.data-table thead {
+    display: none;
+  }
+  table.data-table, table.data-table tbody, table.data-table tr, table.data-table td {
+    display: block;
+    width: 100%;
+  }
+  table.data-table tr {
+    margin-bottom: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  table.data-table td {
+    padding: 12px 16px;
+    border: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+  table.data-table td:last-child {
+    border-bottom: 0;
+  }
+  table.data-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+}

@@ -9,7 +9,7 @@ export default function Admin() {
   const [stats, setStats] = useState(null);
   const [users, setUsers] = useState([]);
   const [stores, setStores] = useState([]);
-  const PAGE_SIZE = 10;
+  const PAGE_SIZE = 6;
   const [userPage, setUserPage] = useState(1);
   const [storePage, setStorePage] = useState(1);
   const [error, setError] = useState('');
@@ -435,7 +435,7 @@ export default function Admin() {
           </div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table style={{
+            <table className="data-table" style={{
               width: '100%',
               borderCollapse: 'collapse',
               background: 'var(--bg-secondary)',
@@ -457,10 +457,10 @@ export default function Admin() {
                     borderBottom: '1px solid var(--border-color)',
                     background: index % 2 === 0 ? 'var(--bg-secondary)' : 'var(--bg-card)'
                   }}>
-                    <td style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start' }}>{user.name}</td>
-                    <td style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start' }}>{user.email}</td>
-                    <td style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start' }}>{user.address}</td>
-                    <td style={{ padding: '16px', textAlign: 'start' }}>
+                    <td data-label="Name" style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start', wordBreak: 'break-word' }}>{user.name}</td>
+                    <td data-label="Email" style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start', wordBreak: 'break-word' }}>{user.email}</td>
+                    <td data-label="Address" style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start', wordBreak: 'break-word' }}>{user.address}</td>
+                    <td data-label="Role" style={{ padding: '16px', textAlign: 'start' }}>
                       <span style={{
                         padding: '4px 8px',
                         borderRadius: '6px',
@@ -475,7 +475,7 @@ export default function Admin() {
                           user.role === 'store-owner' ? 'Owner' : 'User'}
                       </span>
                     </td>
-                    <td style={{ padding: '16px', textAlign: 'start' }}>
+                    <td data-label="" style={{ padding: '16px', textAlign: 'start' }}>
                       <Link to={`/admin/users/${user.id}`} className="btn btn-secondary" style={{ fontSize: '12px', padding: '8px 12px', textDecoration: 'none', whiteSpace: 'nowrap', display: 'inline-block' }}>
                         View Details
                       </Link>
@@ -579,7 +579,7 @@ export default function Admin() {
           </div>
         ) : (
           <div style={{ overflowX: 'auto' }}>
-            <table style={{
+            <table className="data-table" style={{
               width: '100%',
               borderCollapse: 'collapse',
               background: 'var(--bg-secondary)',
@@ -601,10 +601,10 @@ export default function Admin() {
                     borderBottom: '1px solid var(--border-color)',
                     background: index % 2 === 0 ? 'var(--bg-secondary)' : 'var(--bg-card)'
                   }}>
-                    <td style={{ padding: '16px', color: 'var(--text-primary)', fontWeight: '500', textAlign: 'start' }}> {store.name}</td>
-                    <td style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start' }}>{store.email}</td>
-                    <td style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start' }}> {store.address}</td>
-                    <td style={{ padding: '16px', textAlign: 'start' }}>
+                    <td data-label="Store Name" style={{ padding: '16px', color: 'var(--text-primary)', fontWeight: '500', textAlign: 'start', wordBreak: 'break-word' }}> {store.name}</td>
+                    <td data-label="Email" style={{ padding: '16px', color: 'var(--text-primary)', textAlign: 'start', wordBreak: 'break-word' }}>{store.email}</td>
+                    <td data-label="Address" style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start', wordBreak: 'break-word' }}> {store.address}</td>
+                    <td data-label="Rating" style={{ padding: '16px', textAlign: 'start' }}>
                       <span style={{
                         padding: '4px 8px',
                         borderRadius: '6px',
@@ -616,7 +616,7 @@ export default function Admin() {
                         {store.rating ?? 0}
                       </span>
                     </td>
-                    <td style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start' }}>
+                    <td data-label="Owner" style={{ padding: '16px', color: 'var(--text-secondary)', textAlign: 'start', wordBreak: 'break-word' }}>
                       {store.owner?.name || 'No owner assigned'}
                     </td>
                   </tr>
