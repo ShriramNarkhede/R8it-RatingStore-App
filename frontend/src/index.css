@@ -171,8 +171,8 @@ body.has-sticky {
   position: relative; /* normal floating at the top */
   z-index: 100;
   /* Smooth transition when becoming sticky */
-  transition: transform 250ms ease, border-radius 200ms ease;
-  will-change: transform;
+  transition: transform 250ms ease, border-radius 200ms ease, width 300ms ease, margin 300ms ease, max-width 300ms ease;
+  will-change: transform, width, margin, max-width;
   /* Floating appearance when not sticky */
   max-width: 1200px;
   margin: 16px auto 0;

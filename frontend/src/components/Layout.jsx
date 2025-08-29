@@ -50,7 +50,7 @@ export default function Layout() {
   useEffect(() => {
     let visibilityTimeout;
     const onScroll = () => {
-      const shouldStick = window.scrollY > 0;
+      const shouldStick = window.scrollY > 10; // Small threshold to prevent flickering
       if (shouldStick && !isSticky) {
         setIsSticky(true);
         // delay adding visible class to allow slide-in animation
@@ -69,13 +69,13 @@ export default function Layout() {
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    onScroll(); // Check initial state
     return () => {
       window.removeEventListener('scroll', onScroll);
       clearTimeout(visibilityTimeout);
       document.body.classList.remove('has-sticky');
     };
-  }, []);
+  }, [isSticky]);
 
   // Don't render navigation if no user
   if (!user) {
