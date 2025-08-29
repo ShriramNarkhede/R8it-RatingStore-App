@@ -4,7 +4,7 @@ require('dotenv').config();
 let sequelize;
 
 if (process.env.DATABASE_URL) {
-  // Use Railway's DATABASE_URL
+  // Use Railway's DATABASE_URL (production)
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     dialectOptions: {
@@ -15,7 +15,7 @@ if (process.env.DATABASE_URL) {
     }
   });
 } else {
-  // Fallback to individual environment variables
+  // Fallback to individual environment variables (local development)
   sequelize = new Sequelize(
     process.env.DB_NAME,
     process.env.DB_USERNAME,
@@ -23,6 +23,9 @@ if (process.env.DATABASE_URL) {
     {
       host: process.env.DB_HOST,
       dialect: process.env.DB_DIALECT || 'postgres',
+      dialectOptions: {
+        ssl: false // Disable SSL for local development
+      }
     }
   );
 }

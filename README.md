@@ -6,6 +6,7 @@ A fullstack web application for discovering, rating, and managing stores. Built 
 
 ## 🚀 Features
 
+
 - **User Authentication** (JWT)
 - **Role-based Dashboards**: Admin, Store Owner, User
 - **Store Management**: Create, assign owners, rate, and review stores
