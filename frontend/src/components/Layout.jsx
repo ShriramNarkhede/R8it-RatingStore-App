@@ -22,7 +22,8 @@ export default function Layout() {
           gap: 'clamp(8px, 2vw, 16px)', 
           padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)',
           borderRadius: 'clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
-          margin: '0 clamp(8px, 2vw, 16px)',
+          margin: '0',
+          width: '100%',
           flexWrap: 'wrap'
         }}>
           <img 
@@ -47,7 +48,7 @@ export default function Layout() {
           </div>
         </header>
         <main style={{ 
-          padding: 'clamp(16px, 4vw, 24px)', 
+          padding: 'clamp(8px, 3vw, 16px)', 
           minHeight: 'calc(100vh - 80px)' 
         }}>
           <Outlet />
@@ -64,7 +65,8 @@ export default function Layout() {
         gap: 'clamp(8px, 2vw, 16px)', 
         padding: 'clamp(12px, 3vw, 16px) clamp(16px, 4vw, 24px)',
         borderRadius: 'clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px) clamp(12px, 3vw, 20px)',
-        margin: '0 clamp(8px, 2vw, 16px)',
+        margin: '0',
+        width: '100%',
         flexWrap: 'wrap'
       }}>
         <img 
@@ -126,7 +128,7 @@ export default function Layout() {
         </div>
       </header>
       <main style={{ 
-        padding: 'clamp(16px, 4vw, 24px)', 
+        padding: 'clamp(8px, 3vw, 16px)', 
         minHeight: 'calc(100vh - 80px)' 
       }}>
         <Outlet />

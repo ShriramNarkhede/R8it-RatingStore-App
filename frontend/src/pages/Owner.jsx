@@ -34,7 +34,7 @@ export default function Owner() {
   }
 
   return (
-    <div className="container" style={{ padding: 'clamp(16px, 4vw, 24px)' }}>
+    <div className="container" style={{ padding: 'clamp(12px, 3vw, 20px)' }}>
       <h1 style={{
         textAlign: 'center',
         marginBottom: 'clamp(24px, 6vw, 32px)',
@@ -45,7 +45,7 @@ export default function Owner() {
       </h1>
       {error && <ErrorMessage message={error} />}
       {data && (
-        <div style={{ display: 'grid', gap: 'clamp(20px, 5vw, 24px)' }}>
+        <div style={{ display: 'grid', gap: 'clamp(16px, 4vw, 20px)' }}>
           {/* Store Statistics */}
           <div className="glass-card">
             <h2 style={{
@@ -57,15 +57,16 @@ export default function Owner() {
             </h2>
             <div style={{
               display: 'grid',
-              gap: 'clamp(16px, 4vw, 20px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+              gap: 'clamp(12px, 3vw, 16px)',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))'
             }}>
               <div style={{
                 padding: '20px',
                 background: 'var(--bg-secondary)',
                 borderRadius: '12px',
                 border: '1px solid var(--border-color)',
-                textAlign: 'center'
+                textAlign: 'center',
+                minWidth: '0'
               }}>
                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{data.storeName}</div>
                 <div style={{ color: 'var(--text-secondary)' }}>Store Name</div>
@@ -75,7 +76,8 @@ export default function Owner() {
                 background: 'var(--bg-secondary)',
                 borderRadius: '12px',
                 border: '1px solid var(--border-color)',
-                textAlign: 'center'
+                textAlign: 'center',
+                minWidth: '0'
               }}>
                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{data.averageRating}</div>
                 <div style={{ color: 'var(--text-secondary)' }}>Average Rating</div>
@@ -85,7 +87,8 @@ export default function Owner() {
                 background: 'var(--bg-secondary)',
                 borderRadius: '12px',
                 border: '1px solid var(--border-color)',
-                textAlign: 'center'
+                textAlign: 'center',
+                minWidth: '0'
               }}>
                 <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{data.totalRatings}</div>
                 <div style={{ color: 'var(--text-secondary)' }}>Total Ratings</div>
@@ -112,23 +115,25 @@ export default function Owner() {
                 </p>
               </div>
             ) : (
-              <div style={{ display: 'grid', gap: '16px' }}>
+              <div style={{ display: 'grid', gap: '12px' }}>
                 {data.raters.map((rater, idx) => (
                   <div key={idx} style={{
-                    padding: '20px',
+                    padding: '16px',
                     background: 'var(--bg-secondary)',
                     borderRadius: '12px',
                     border: '1px solid var(--border-color)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    alignItems: 'center',
+                    gap: '12px',
+                    minWidth: '0'
                   }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ color: 'var(--text-primary)', fontWeight: '600', fontSize: '16px', marginBottom: '4px' }}>{rater.name}</div>
-                      <div style={{ color: 'var(--text-secondary)', fontSize: '14px' }}>{rater.email}</div>
+                    <div style={{ minWidth: '0' }}>
+                      <div style={{ color: 'var(--text-primary)', fontWeight: '600', fontSize: '16px', marginBottom: '4px', wordBreak: 'break-word' }}>{rater.name}</div>
+                      <div style={{ color: 'var(--text-secondary)', fontSize: '14px', wordBreak: 'break-word' }}>{rater.email}</div>
                     </div>
                     <div style={{
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '8px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '12px', border: '1px solid rgba(59, 130, 246, 0.3)', width: '50px', height: '50px', justifyContent: 'center', fontSize: '12px', fontWeight: '600', color: '#2563eb', textTransform: 'none', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)'
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '8px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '12px', border: '1px solid rgba(59, 130, 246, 0.3)', width: '44px', height: '44px', justifyContent: 'center', fontSize: '12px', fontWeight: '600', color: '#2563eb', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)'
                     }}>
                       <span style={{ color: '#2563eb', fontWeight: '600', fontSize: '12px' }}>
                         {rater.rating}
@@ -148,7 +153,7 @@ export default function Owner() {
             <div style={{
               display: 'grid',
               gap: 'clamp(12px, 3vw, 16px)',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))'
             }}>
               <button
                 className="btn"
