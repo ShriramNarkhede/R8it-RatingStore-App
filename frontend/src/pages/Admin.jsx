@@ -141,13 +141,14 @@ export default function Admin() {
           <div style={{
             display: 'grid',
             gap: 'clamp(16px, 4vw, 20px)',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))'
           }}>
             <div style={{
               padding: '20px',
               background: 'var(--bg-secondary)',
               borderRadius: '12px',
               border: '1px solid var(--border-color)',
+              minWidth: '0',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{stats.totalUsers}</div>
@@ -158,6 +159,7 @@ export default function Admin() {
               background: 'var(--bg-secondary)',
               borderRadius: '12px',
               border: '1px solid var(--border-color)',
+              minWidth: '0',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{stats.totalStores}</div>
@@ -168,6 +170,7 @@ export default function Admin() {
               background: 'var(--bg-secondary)',
               borderRadius: '12px',
               border: '1px solid var(--border-color)',
+              minWidth: '0',
               textAlign: 'center'
             }}>
               <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--primary-color)' }}>{stats.totalRatings}</div>
@@ -181,7 +184,7 @@ export default function Admin() {
       <div style={{
         display: 'grid',
         gap: 'clamp(20px, 5vw, 24px)',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
         marginBottom: 'clamp(24px, 6vw, 32px)'
       }}>
         {/* Create User Form */}

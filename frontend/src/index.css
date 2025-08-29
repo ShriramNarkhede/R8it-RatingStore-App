@@ -97,9 +97,9 @@ body {
 
 /* Input Styles */
 .input {
-  width:94%;
-  margin-left: 10px;
-  margin-right: 20px;
+  width:100%;
+  margin-left: 0px;
+  margin-right: 10px;
   background: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: 12px;
