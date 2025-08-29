@@ -371,7 +371,7 @@ export default function Admin() {
         }}>
           <div>
             <label style={{ display: 'block', marginBottom: '8px', color: 'var(--text-primary)', fontWeight: '500', fontSize: '14px', textAlign: 'center' }}>
-              Search By Name
+              Search Name
             </label>
             <input
               className="input"

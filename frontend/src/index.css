@@ -46,6 +46,11 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Add top offset only when header is sticky */
+body.has-sticky {
+  padding-top: 72px;
+}
+
 /* Glassmorphism Card */
 .glass-card {
   background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
@@ -55,7 +60,7 @@ body {
   border-radius: 16px; /* Rounded corners */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
   padding: 24px; /* Inner padding */
-  margin: 16px 10px; /* Vertical margin */
+  margin: 16px 0; /* Full-width on mobile containers */
   transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
 }
 
@@ -163,17 +168,61 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: var(--glass-border);
   box-shadow: var(--glass-shadow);
-  position: sticky;
-  top: 0;
+  position: relative; /* normal floating at the top */
   z-index: 100;
+  /* Smooth transition when becoming sticky */
+  transition: transform 250ms ease, border-radius 200ms ease;
+  will-change: transform;
+  /* Floating appearance when not sticky */
+  max-width: 1200px;
+  margin: 16px auto 0;
+}
+
+/* Fixed, full-width when scrolled */
+.header.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0;
+  border-radius: 0 !important;
+  z-index: 1000;
+  /* Start just above the viewport, then slide in */
+  transform: translateY(-100%);
+  /* Override floating styles when sticky */
+  max-width: none;
+}
+
+/* Final position once sticky is shown */
+.header.is-sticky.is-visible {
+  transform: translateY(0);
+}
+
+/* Mobile overlay animations */
+@keyframes overlaySlideIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes overlaySlideOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+
+.overlay-enter {
+  animation: overlaySlideIn 700ms ease forwards;
+}
+.overlay-exit {
+  animation: overlaySlideOut 600ms ease forwards;
 }
 
 /* Navigation Styles */
 .nav-link {
-  color: var(--text-primary);
+  color: var(--text-primary); 
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 8px;
+  border: 2px solid var(--border-color);
   transition: all 0.3s ease;
   font-weight: 500;
 }
@@ -181,6 +230,7 @@ body {
 .nav-link:hover {
   background: var(--primary-color);
   color: white;
+  border-color: var(--primary-color);
   transform: translateY(-1px);
 }
 
@@ -241,8 +291,8 @@ body {
 
 @media (max-width: 480px) {
   .glass-card {
-    margin: 8px;
-    padding: 16px;
+    margin: 6px 0;
+    padding: 12px;
   }
   
   .btn {
@@ -282,13 +332,13 @@ body {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 12px;
+    padding: 0 6px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 8px;
+    padding: 0 4px;
   }
 }
 
@@ -370,4 +420,25 @@ body {
     color: var(--text-secondary);
     margin-bottom: 4px;
   }
+}
+
+/* Mobile navbar */
+@media (max-width: 768px) {
+  .menu-btn { display: inline-flex; }
+  .nav-links, .nav-actions { width: 100%; margin-top: 8px; }
+  .collapsible {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+  }
+  .collapsible.open {
+    max-height: 200px;
+    opacity: 1;
+  }
+}
+
+@media (min-width: 769px) {
+  .menu-btn { display: none !important; }
+  .nav-links, .nav-actions { display: flex !important; }
 }
