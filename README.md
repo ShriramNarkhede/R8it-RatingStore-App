@@ -12,13 +12,13 @@ A fullstack web application for discovering, rating, and managing stores. Built 
 
 <div align="center">
 
-| ![Screenshot 1](screenshots/s1.png) | ![Screenshot 2](screenshots/s2.png) 
+| ![Screenshot 1](screenshots/s1.png) | ![Screenshot 2](screenshots/s2.png) |
 |:---:|:---:|:---:|
-| **Owner Dashboard** | **User Profile** 
+| **Owner Dashboard** | **User Profile** |
 
 | ![Mobile 2](screenshots/m2.png) | ![Mobile 3](screenshots/m3.png) | ![Mobile 1](screenshots/m1.png) |
 |:---:|:---:|:---:|
-| **Mobile Navigation** | **Mobile Store List** | **Mobile View** |
+| **Login Page** | **Create Account Page** | **Mobile View** |
 
 | ![Options 2](screenshots/op2.png) | ![Options 3](screenshots/op3.png) | ![Options 4](screenshots/op4.png) |
 |:---:|:---:|:---:|
