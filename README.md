@@ -1,6 +1,34 @@
-# R8it Store Rating App
+# R8it Store Rating website
 
 A fullstack web application for discovering, rating, and managing stores. Built with **React (Vite)** frontend and **Node.js/Express/Sequelize** backend, with PostgreSQL database. Easily deployable to Railway (backend/database) and Vercel (frontend).
+
+## 🌐 Live Demo
+
+**[🚀 Try the App → r8it-app.vercel.app](https://r8it-app.vercel.app)**
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+
+| ![Screenshot 1](screenshots/s1.png) | ![Screenshot 2](screenshots/s2.png) | ![Mobile 1](screenshots/m1.png) |
+|:---:|:---:|:---:|
+| **Desktop View** | **Store Details** | **Mobile View** |
+
+| ![Mobile 2](screenshots/m2.png) | ![Mobile 3](screenshots/m3.png) | ![Options 1](screenshots/op1.png) |
+|:---:|:---:|:---:|
+| **Mobile Navigation** | **Mobile Store List** | **Options Menu** |
+
+| ![Options 2](screenshots/op2.png) | ![Options 3](screenshots/op3.png) | ![Options 4](screenshots/op4.png) |
+|:---:|:---:|:---:|
+| **Settings Panel** | **User Profile** | **Admin Dashboard** |
+
+| ![Options 5](screenshots/op5.png) | ![Options 1-1](screenshots/op1-1.png) | ![Options 3-2](screenshots/op-3.png) |
+|:---:|:---:|:---:|
+| **Store Management** | **Rating Interface** | **Advanced Options** |
+
+</div>
 
 ---
 
