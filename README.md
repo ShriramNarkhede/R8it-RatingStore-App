@@ -14,19 +14,20 @@ A fullstack web application for discovering, rating, and managing stores. Built 
 
 | ![Screenshot 1](screenshots/s1.png) | ![Screenshot 2](screenshots/s2.png) | ![Mobile 1](screenshots/m1.png) |
 |:---:|:---:|:---:|
-| **Desktop View** | **Store Details** | **Mobile View** |
+| **Owner Dashboard** | **User Profile** |
+ **Mobile View** |
 
 | ![Mobile 2](screenshots/m2.png) | ![Mobile 3](screenshots/m3.png) | ![Options 1](screenshots/op1.png) |
 |:---:|:---:|:---:|
-| **Mobile Navigation** | **Mobile Store List** | **Options Menu** |
+| **Mobile Navigation** | **Mobile Store List** | **Home Page** |
 
 | ![Options 2](screenshots/op2.png) | ![Options 3](screenshots/op3.png) | ![Options 4](screenshots/op4.png) |
 |:---:|:---:|:---:|
-| **Settings Panel** | **User Profile** | **Admin Dashboard** |
+| **Admin Panel** | **Admin  panel** | **Admin Dashboard** |
 
 | ![Options 5](screenshots/op5.png) | ![Options 1-1](screenshots/op1-1.png) | ![Options 3-2](screenshots/op-3.png) |
 |:---:|:---:|:---:|
-| **Store Management** | **Rating Interface** | **Advanced Options** |
+| ** Profile** | **Rating Interface** | **Advanced Options** |
 
 </div>
 
